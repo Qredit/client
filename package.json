@@ -1,0 +1,85 @@
+{
+	"name": "@arkecosystem/client",
+	"description": "A simple TypeScript API client for the Ark Blockchain.",
+	"version": "1.0.5",
+	"contributors": [],
+	"license": "MIT",
+	"files": [
+		"/dist"
+	],
+	"main": "dist/index",
+	"types": "dist/index",
+	"scripts": {
+		"build": "yarn clean && tsc",
+		"build:watch": "yarn build -w",
+		"clean": "rimraf .coverage dist tmp",
+		"format": "yarn lint && yarn prettier",
+		"lint": "tslint -c tslint.json -p tslint.json 'src/**/*.ts' --fix",
+		"prepublishOnly": "yarn build",
+		"prettier": "prettier --write \"./*.{ts,js,json,md}\" \"./**/*.{ts,js,json,md}\"",
+		"test": "jest",
+		"test:watch": "jest --watchAll"
+	},
+	"jest": {
+		"bail": false,
+		"collectCoverage": true,
+		"collectCoverageFrom": [
+			"src/**/*.ts",
+			"!src/index.ts",
+			"!**/node_modules/**"
+		],
+		"coverageDirectory": "<rootDir>/.coverage",
+		"coverageReporters": [
+			"json",
+			"lcov",
+			"text",
+			"clover",
+			"html"
+		],
+		"moduleFileExtensions": [
+			"ts",
+			"tsx",
+			"js",
+			"jsx",
+			"json",
+			"node"
+		],
+		"setupFilesAfterEnv": [
+			"jest-extended"
+		],
+		"testEnvironment": "node",
+		"testMatch": [
+			"**/*.test.ts"
+		],
+		"transform": {
+			"^.+\\.tsx?$": "ts-jest"
+		},
+		"verbose": true
+	},
+	"dependencies": {
+		"got": "^9.6.0",
+		"is-url-superb": "^3.0.0"
+	},
+	"devDependencies": {
+		"@types/got": "^9.6.7",
+		"@types/jest": "^24.0.18",
+		"@types/nock": "^10.0.3",
+		"@types/prettier": "^1.18.2",
+		"@types/rimraf": "^2.0.2",
+		"@typeskrift/tsconfig": "^0.1.2",
+		"@typeskrift/tslint": "^0.1.5",
+		"codecov": "^3.5.0",
+		"cross-env": "^6.0.0",
+		"jest": "^24.9.0",
+		"jest-extended": "^0.11.2",
+		"nock": "^11.3.3",
+		"prettier": "^1.18.2",
+		"rimraf": "^3.0.0",
+		"ts-jest": "^24.0.2",
+		"tslint": "^5.19.0",
+		"typescript": "^3.6.2"
+	},
+	"engines": {
+		"node": ">=10.x"
+	}
+}
